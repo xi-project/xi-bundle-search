@@ -24,7 +24,7 @@ class SearchType extends AbstractType
    
     public function getDefaultOptions(array $options)
     {
-        return array('data_class' => 'Xi\SearchBundle\Form\Model\SearchModel');
+        return array('data_class' => 'Xi\Bundle\SearchBundle\Form\Model\SearchModel');
     }
   
 }
