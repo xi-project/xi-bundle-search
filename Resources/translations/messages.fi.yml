@@ -1,0 +1,8 @@
+search:
+    form:
+        term.label:       Haku
+        submit_button:    Hae
+    validation:
+        index.notblank:       haku indeksi ei ole määritelty
+        search_type.notblank: haku tyyppi ei ole määritelty
+        term.notblank:        hakuehto puuttuu
