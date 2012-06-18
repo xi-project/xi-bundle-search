@@ -1,1 +1,3 @@
 nbproject
+/Tests/vendor/.composer/
+/Tests/vendor
