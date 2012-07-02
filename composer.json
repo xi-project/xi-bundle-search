@@ -19,7 +19,6 @@
         "psr-0": {
             "Xi\\Bundle\\SearchBundle": ""
         }
-    },
-    "target-dir": "Xi/Bundle/SearchBundle"
+    }
 }
 
