@@ -37,8 +37,6 @@ class FOQElasticaSearchTest extends PHPUnit_Framework_TestCase
     {
         $elasticaResultSet = $this->getMockBuilder('Elastica_ResultSet')->disableOriginalConstructor()->getMock();
 
-        // $defaultResultSet = $this->search->convertToSearchResult($elasticaResultSet);
-
         $class = new \ReflectionClass('Xi\Bundle\SearchBundle\Service\Search\FOQElasticaSearch');
         $method = $class->getMethod('convertToSearchResult');
         $method->setAccessible(true);
