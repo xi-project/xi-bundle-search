@@ -56,7 +56,9 @@ class FOQElasticaSearch implements Search
                 $elasticaResult->getSource()
             );
         }
-        return new DefaultSearchResultSet($results, $elasticaResultSet->getTotalHits(), $elasticaResultSet->getTotalTime());
+        // disable call to getTotalTime until that functions exists in an ruflin/elastica version supported by elastica-bundle
+        // return new DefaultSearchResultSet($results, $elasticaResultSet->getTotalHits(), $elasticaResultSet->getTotalTime());
+        return new DefaultSearchResultSet($results, $elasticaResultSet->getTotalHits(), 0);
     }
     
     /**
