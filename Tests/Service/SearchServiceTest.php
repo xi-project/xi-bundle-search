@@ -45,8 +45,18 @@ class SearchServiceTest extends PHPUnit_Framework_TestCase
         $this->formfactory->expects($this->once())->method('create')->will($this->returnValue('form'));      
         $form = $this->service->getSearchForm();
         $this->assertEquals('form', $form); 
-    }    
- 
+    }
+
+    /**
+     * @test
+     */
+    public function getChoosableSearchForm()
+    {
+        $this->formfactory->expects($this->once())->method('create')->will($this->returnValue('form'));
+        $form = $this->service->getChoosableSearchForm(array('index1', 'index2'));
+        $this->assertEquals('form', $form);
+    }
+
     /**
      * @test
      */
