@@ -40,7 +40,7 @@ XiSearchBundle:
 ```yml
 xi_search:
     result_renderer_extensions:
-        type: [type]_renderer_extension
+        [type]: [type]_renderer_extension
     default_limit: [50]
 ```
 
