@@ -21,9 +21,9 @@ class SearchController extends Controller
             $limit = isset($config['default_limit']) ? $config['default_limit'] : null;
 
             if($data->getSearchType() == 'search'){
-                $results = $service->search($data->getIndex(), $data->getTerm(), $config['default_limit']);
+                $results = $service->search($data->getIndex(), $data->getTerm(), $limit);
             } elseif($data->getSearchType() == 'find') {
-                $results = $service->find($data->getIndex(), $data->getTerm(), $config['default_limit']);
+                $results = $service->find($data->getIndex(), $data->getTerm(), $limit);
             }
 
             $resultHtml = $self->renderView('XiSearchBundle:Search:search.html.twig', array(
