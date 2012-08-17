@@ -45,46 +45,104 @@ class SearchForm extends \Twig_Extension
     {
         return array(
             'xi_search_form' => new \Twig_Function_Method(
-            $this, 'searchForm', array('is_safe' => array('html'))
+                $this, 'searchForm', array('is_safe' => array('html'))
+            ),
+            'xi_search_form_choosable' => new \Twig_Function_Method(
+                $this, 'searchFormChoosable', array('is_safe' => array('html'))
             ),
             'xi_find_form' => new \Twig_Function_Method(
-            $this, 'findForm', array('is_safe' => array('html'))
-            ),            
+                $this, 'findForm', array('is_safe' => array('html'))
+            ),
+            'xi_find_form_choosable' => new \Twig_Function_Method(
+                $this, 'findFormChoosable', array('is_safe' => array('html'))
+            ),
             'xi_search_result' => new \Twig_Function_Method(
-            $this, 'searchResult', array('is_safe' => array('html'))
+                $this, 'searchResult', array('is_safe' => array('html'))
             )
         );
     }
-    
+
     /**
      * For default search
      * @param string $index
-     * @param array e $options 
+     * @param array  $options
      */
     public function searchForm($index, $options = array())
-    {   
+    {
         return $this->renderForm($index, $options, 'search');
     }
- 
+
+    /**
+     * @param  string $index          currently selected index
+     * @param  array  $choosableFiels the choosable indices
+     * @param  array  $options
+     */
+    public function searchFormChoosable($index, array $choiceFields, $options = array())
+    {
+        return $this->renderFormWithChoosableIndices($index, $options, 'search', $choiceFields);
+    }
+
     /**
      * if you like to have search results converted to entities
-     * @param string $index
-     * @param array e $options
+     * @param  string $index
+     * @param  array  $options
      * @return string
-     */    
+     */
     public function findForm($index, $options = array())
-    {   
+    {
         return $this->renderForm($index, $options, 'find');
     }
-    
+
+     /**
+     * @param  string   $index
+     * @param  array    $choosableFiels the choosable indices
+     * @param  array    $options
+     * @return string
+     */
+    public function findFormChoosable($index, array $choiceFields, $options = array())
+    {
+        return $this->renderFormWithChoosableIndices($index, $options, 'find', $choiceFields);
+    }
+
+    /**
+     * @param  int    $index
+     * @param  array  $options
+     * @param  string $searchType
+     * @return string
+     */
     private function renderForm($index, $options, $searchType)
     {
         $form = $this->searchService->getSearchForm();
-        $form->get('options')->setData(json_encode($options));
+
+        $form->get('options')->setData($options);
         $form->get('index')->setData($index);
         $form->get('searchType')->setData($searchType);
-        return $this->twig->render('XiSearchBundle:SearchForm:searchform.html.twig',
-            array('form' => $form->createView()));       
+
+        return $this->twig->render(
+            'XiSearchBundle:SearchForm:searchform.html.twig',
+            array('form' => $form->createView())
+        );
+    }
+
+    /**
+     * @param  int    $index
+     * @param  array  $options
+     * @param  string $searchType
+     * @param  array  $choiceFields
+     * @return string
+     */
+    private function renderFormWithChoosableIndices($index, $options, $searchType, $choiceFields)
+    {
+        $form = $this->searchService->getChoosableSearchForm($choiceFields);
+
+        $form->get('options')->setData($options);
+        $form->get('index')->setData($index);
+        $form->get('searchType')->setData($searchType);
+
+        return $this->twig->render(
+            'XiSearchBundle:SearchForm:searchform_choosable.html.twig',
+            array('form' => $form->createView())
+        );
     }
 
     /**

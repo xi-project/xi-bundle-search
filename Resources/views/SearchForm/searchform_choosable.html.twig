@@ -1,0 +1,13 @@
+<form action="{{ path('XiSearchBundle_search') }}" class="ajax-form search-form" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form.options) }}
+    {{ form_widget(form.searchType) }}
+    {{ form_label(form.index) }}
+    {{ form_widget(form.index) }}
+	{{ form_widget(form.term) }}
+	{{ form_rest(form) }}
+
+	<div id="search-form">
+	    <button type="submit">{{'search.form.submit_button'|trans}}</button>
+	</div>
+
+</form>

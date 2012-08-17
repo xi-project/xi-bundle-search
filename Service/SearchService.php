@@ -5,6 +5,7 @@ namespace Xi\Bundle\SearchBundle\Service;
 use Symfony\Component\Form\FormFactory,
     Symfony\Component\Form\Form,
     Xi\Bundle\SearchBundle\Form\SearchType,
+    Xi\Bundle\SearchBundle\Form\ChoosableSearchType,
     Xi\Bundle\SearchBundle\Service\Search\Search,
     Xi\Bundle\SearchBundle\Service\Search\Result\SearchResultSet;
 
@@ -41,8 +42,19 @@ class SearchService
         return $this->formFactory->create(
             new SearchType()
         );
-    }    
- 
+    }
+
+    /**
+     * @param array $choices array of choosable indices
+     * @return Form
+     */
+    public function getChoosableSearchForm(array $choices)
+    {
+        return $this->formFactory->create(
+            new ChoosableSearchType($choices)
+        );
+    }
+
     /**
      * @param string $index
      * @param string $term
