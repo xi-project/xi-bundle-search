@@ -1,6 +1,8 @@
 search:
     form:
-        term.label:       Haku
+        term:
+            label:        Haku
+            placeholder:  Hakusana
         submit_button:    Hae
     validation:
         index.notblank:       haku indeksi ei ole määritelty
