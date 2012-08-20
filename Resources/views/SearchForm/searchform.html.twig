@@ -1,6 +1,6 @@
 <form action="{{ path('XiSearchBundle_search') }}" class="ajax-form article-form" method="post" {{ form_enctype(form) }}>
 	{{ form_widget(form.term, { 'attr': {'placeholder' : ('search.form.term.placeholder')|trans} }) }}
-    {{ form_widget(rest) }}
+    {{ form_rest(form) }}
     <p>
         <button type="submit">{{'search.form.submit_button'|trans}}</button>
     </p>
