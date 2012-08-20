@@ -17,13 +17,15 @@ class SearchController extends Controller
 
         return $this->processForm($service->getSearchForm(), function($form) use($self, $service, $config) {
             $data = $form->getData();
-            
+
+            $limit = isset($config['default_limit']) ? $config['default_limit'] : null;
+
             if($data->getSearchType() == 'search'){
-                $results = $service->search($data->getIndex(), $data->getTerm());
+                $results = $service->search($data->getIndex(), $data->getTerm(), $limit);
             } elseif($data->getSearchType() == 'find') {
-                $results = $service->find($data->getIndex(), $data->getTerm());
-            }    
-             
+                $results = $service->find($data->getIndex(), $data->getTerm(), $limit);
+            }
+
             $resultHtml = $self->renderView('XiSearchBundle:Search:search.html.twig', array(
                 'results' => $results, 'index' => $data->getIndex(), 'options' => json_decode($data->getOptions())
             ));
