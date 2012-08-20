@@ -40,8 +40,8 @@ XiSearchBundle:
 ```yml
 xi_search:
     result_renderer_extensions:
-        [type]: [type]_renderer_extension
-    default_limit: [50]
+        acmeType: acmeType_renderer_extension
+    default_limit: 50
 ```
 
 ### extend ajaxForm (from ajaxbundle) and make sure you bind your custom class as your ajax form handler (see ajaxbundle documentation)
