@@ -3,10 +3,10 @@
     {{ form_widget(form.searchType) }}
     {{ form_label(form.index) }}
     {{ form_widget(form.index) }}
-	{{ form_widget(form.term) }}
+	{{ form_widget(form.term, { 'attr': {'placeholder' : ('search.form.term.placeholder')|trans} }) }}
 	{{ form_rest(form) }}
 
-	<div id="search-form">
+	<div id="xi_searchbundle_searchtype_submit">
 	    <button type="submit">{{'search.form.submit_button'|trans}}</button>
 	</div>
 
