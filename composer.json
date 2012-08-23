@@ -15,7 +15,9 @@
         "symfony/form": "=v2.1.0-RC1",
         "symfony/dependency-injection": "=v2.1.0-RC1",
         "twig/twig": "1.*",
-        "exercise/elastica-bundle": "dev-master"
+        "exercise/elastica-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "dev-master",
+        "xi/ajax-bundle": "2.1.x-dev"
     },
     "autoload": {
         "psr-0": {
