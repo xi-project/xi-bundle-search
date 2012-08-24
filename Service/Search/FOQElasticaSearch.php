@@ -73,7 +73,7 @@ class FOQElasticaSearch implements Search
      * @param Elastica_ResultSet $elasticaResultSet
      * @return \Xi\Bundle\SearchBundle\Service\Search\Result\DefaultSearchResultSet 
      */
-    protected function convertToSearchResult(Elastica_ResultSet $elasticaResultSet, $count = null)
+    protected function convertToSearchResult(Elastica_ResultSet $elasticaResultSet)
     {
         $results = array();
         foreach($elasticaResultSet as $elasticaResult) {
