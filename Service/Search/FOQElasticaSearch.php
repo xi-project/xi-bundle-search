@@ -11,7 +11,7 @@ use Symfony\Component\DependencyInjection\Container,
     Knp\Component\Pager\Pagination,
     FOQ\ElasticaBundle\Paginator\TransformedPaginatorAdapter,
     FOQ\ElasticaBundle\Subscriber\PaginateElasticaQuerySubscriber,
-    Knp\Component\Pager\Event\Subscriber\Paginate\ElasticaQuerySubscriber;
+    Xi\Bundle\SearchBundle\Event\Subscriber\ElasticaQuerySubscriber;
 
 class FOQElasticaSearch implements Search
 {
@@ -63,18 +63,17 @@ class FOQElasticaSearch implements Search
 
         $paginationView = $paginator->paginate(array($this->getSearchable($index), $query), $page, $limit);
 
-        # instead of this perhaps create another subscriber that returns an actual result set
-        $searchResults = $this->convertToSearchResult($paginationView->getItems(), $paginationView->getTotalItemCount());
-        $paginationView->setItems($searcResult->getResults());
+        $searcResultSet = $this->convertToSearchResult($paginationView->getItems());
+        $paginationView->setItems($searcResultSet->getResults());
 
         return $paginationView;
     }
 
     /**
-     * @param Elastica_ResultSet|array $elasticaResultSet Elastica_ResultSet or Elastica_ResultSet::getResults
+     * @param Elastica_ResultSet $elasticaResultSet
      * @return \Xi\Bundle\SearchBundle\Service\Search\Result\DefaultSearchResultSet 
      */
-    protected function convertToSearchResult($elasticaResultSet, $count = null)
+    protected function convertToSearchResult(Elastica_ResultSet $elasticaResultSet, $count = null)
     {
         $results = array();
         foreach($elasticaResultSet as $elasticaResult) {
@@ -87,11 +86,9 @@ class FOQElasticaSearch implements Search
             );
         }
 
-        $count = is_object($elasticaResultSet) ? $elasticaResultSet->getTotalHits() : $count;
-
         // disable call to getTotalTime until that functions exists in an ruflin/elastica version supported by elastica-bundle
         // return new DefaultSearchResultSet($results, $elasticaResultSet->getTotalHits(), $elasticaResultSet->getTotalTime());
-        return new DefaultSearchResultSet($results, $count, 0);
+        return new DefaultSearchResultSet($results, $elasticaResultSet->getTotalHits(), 0);
     }
 
     /**
