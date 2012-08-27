@@ -1,0 +1,12 @@
+{# sorting of properties based on queried types..
+    <span>{{ pagination.sortable('Id', 'x.id')|raw }}</span>
+#}
+
+{% for result in results %}
+    {{ xi_search_result(result, options) }}
+{% endfor %}
+<div class="clear"></div>
+
+<div class="pagination">
+    {{ results.render()|raw }}
+</div>

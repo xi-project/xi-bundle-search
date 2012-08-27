@@ -61,14 +61,28 @@ class SearchService
      * @param int    $limit
      * @return SearchResultSet
      */
-    public function search($index, $term, $limit = null) 
-    {      
+    public function search($index, $term, $limit = null)
+    {
         return $this->searchInterface->search($index, $term, $limit);
     }
 
     /**
+     * Search for a set wrapped inside a paginator
+     *
+     * @param  string $index
+     * @param  string $term
+     * @param  int    $page
+     * @param  int    $limit
+     * @return PaginatorInterface
+     */
+    public function searchPaginated($index, $term, $page, $limit)
+    {
+        return $this->searchInterface->searchPaginated($index, $term, $page, $limit);
+    }
+
+    /**
      * Find and returns array of searched entities
-     * 
+     *
      * @param string $index
      * @param string $term
      * @param int    $limit
@@ -76,7 +90,21 @@ class SearchService
      */
     public function find($index, $term, $limit = null)
     {
-        return $this->searchInterface->find($index, $term, $limit);    
+        return $this->searchInterface->find($index, $term, $limit);
     }
-    
+
+    /**
+     * Find a set wrapped inside a paginator
+     *
+     * @param  string $index
+     * @param  string $term
+     * @param  int    $page
+     * @param  int    $limit
+     * @return PaginatorInterface
+     */
+    public function findPaginated($index, $term, $page, $limit)
+    {
+        return $this->searchInterface->findPaginated($index, $term, $page, $limit);
+    }
+
 }
