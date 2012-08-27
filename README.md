@@ -66,7 +66,7 @@ premade implementation for it. This however requires [FOQElasticaBundle](https:/
 ## Pagination
 Pagination uses knp-pagination bundle, and it's on by default
 
-Suppose the search is retreived via ajax, there's a jquery plugin included that binds the received pagination's logic to the actual search form with javascript.
+Suppose the search is retrieved via ajax, there's a jquery plugin included that binds the received pagination's logic to the actual search form with javascript.
 
 As the pagination generally uses the search forms default fields, only the indices need configuration. page, term and submit button values can also be overridden
 ``` coffee
@@ -74,7 +74,7 @@ $('#search-result-container').xiSearchPaginate
         indices: ['#xi_searchbundle_searchtype_index_0', '#xi_searchbundle_searchtype_index_1', ...]
 ```
 
-For these bindigs to work, configure the knp pagination to use the proper pagination template
+For these bindings to work, configure the knp pagination to use the proper pagination template
 ```yml
 knp_paginator:
     page_range: 9                      # default page range used in pagination control
