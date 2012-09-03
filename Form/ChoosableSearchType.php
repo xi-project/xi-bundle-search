@@ -19,9 +19,10 @@ class ChoosableSearchType extends SearchType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('options', 'hidden')
+            ->add('options',    'hidden')
             ->add('index',      'choice',       array('choices' => $this->choices, 'expanded' => true, 'label' => 'xi_search.choose-index'))
             ->add('searchType', 'hidden')
+            ->add('page',       'hidden')
             ->add('term',       'text',         array('label' => 'search.form.term.label'));
     }
 

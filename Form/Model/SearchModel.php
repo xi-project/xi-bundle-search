@@ -28,7 +28,17 @@ class SearchModel
      * @Assert\NotBlank(message="search.validation.term.notblank") 
      */      
     protected $term;
-    
+
+    /**
+     * @var int
+     */
+    protected $page;
+
+    public function __construct()
+    {
+        $this->page = 1;
+    }
+
     /**
      * @param string $options
      * @return \Xi\Bundle\SearchBundle\Form\Model\SearchModel 
@@ -90,6 +100,7 @@ class SearchModel
     public function setTerm($term)
     {
         $this->term = $term;
+
         return $this;
     }
     
@@ -99,5 +110,24 @@ class SearchModel
     public function getTerm()
     {
         return $this->term;
+    }
+
+    /**
+     * @param  int $page
+     * @return \Xi\Bundle\SearchBundle\Form\Model\SearchModel
+     */
+    public function setPage($page)
+    {
+        $this->page = $page;
+
+        return $this;
+    }
+
+    /**
+     * @return int
+     */
+    public function getPage()
+    {
+        return $this->page;
     }
 }

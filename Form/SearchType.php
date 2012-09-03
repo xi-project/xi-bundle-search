@@ -15,6 +15,7 @@ class SearchType extends AbstractType
             ->add('options',    'hidden')
             ->add('index',      'hidden')
             ->add('searchType', 'hidden')
+            ->add('page',       'hidden')
             ->add('term',       'text',         array('label' => 'search.form.term.label'));         
     }
 
