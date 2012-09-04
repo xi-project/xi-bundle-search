@@ -62,3 +62,28 @@ class App.AjaxForm.YourCustomClass extends App.AjaxForm.Default
 
 Probably most easiest way to use this bundle is to use it with ElasticSearch because XiSearchBundle provides you
 premade implementation for it. This however requires [FOQElasticaBundle](https://github.com/Exercise/FOQElasticaBundle) to work.
+
+## Pagination
+Pagination uses knp-pagination bundle, and it's on by default
+
+Suppose the search is retrieved via ajax, there's a jquery plugin included that binds the received pagination's logic to the actual search form with javascript.
+
+As the pagination generally uses the search forms default fields, only the indices need configuration. page, term and submit button values can also be overridden
+``` coffee
+$('#search-result-container').xiSearchPaginate
+        indices: ['#xi_searchbundle_searchtype_index_0', '#xi_searchbundle_searchtype_index_1', ...]
+```
+
+For these bindings to work, configure the knp pagination to use the proper pagination template
+```yml
+knp_paginator:
+    page_range: 9                      # default page range used in pagination control
+    default_options:
+        page_name: page                # page query parameter name
+        sort_field_name: sort          # sort field query parameter name
+        sort_direction_name: direction # sort direction query parameter name
+        distinct: true                 # ensure distinct results, useful when ORM queries are using GROUP BY statements
+    template:
+        pagination: XiSearchBundle:Pagination:sliding.html.twig     # sliding pagination controls template
+        sortable: KnpPaginatorBundle:Pagination:sortable_link.html.twig # sort link template
+```

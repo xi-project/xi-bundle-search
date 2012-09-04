@@ -3,28 +3,42 @@
 namespace Xi\Bundle\SearchBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\FormBuilder;
+use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class SearchType extends AbstractType
 {
-    
-    public function buildForm(FormBuilder $builder, array $options)
-    {     
+
+    /**
+     * @param  FormBuilderInterface $builder
+     * @param  array                $options
+     */
+    public function buildForm(FormBuilderInterface $builder, array $options)
+    {
         $builder
             ->add('options',    'hidden')
             ->add('index',      'hidden')
             ->add('searchType', 'hidden')
+            ->add('page',       'hidden')
             ->add('term',       'text',         array('label' => 'search.form.term.label'));         
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'xi_searchbundle_searchtype';
     }
-   
-    public function getDefaultOptions(array $options)
+
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
+    public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
-        return array('data_class' => 'Xi\Bundle\SearchBundle\Form\Model\SearchModel');
+        $resolver->setDefaults(array(
+            'data_class' => 'Xi\Bundle\SearchBundle\Form\Model\SearchModel',
+        ));
     }
-  
+
 }

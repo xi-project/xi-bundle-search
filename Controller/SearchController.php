@@ -8,9 +8,9 @@ use Xi\Bundle\AjaxBundle\Controller\JsonResponseController as Controller,
 
 class SearchController extends Controller
 {
-    
+
     public function searchAction()
-    {       
+    {
         $self       = $this;
         $service    = $this->getSearchService();
         $config     = $this->container->getParameter('xi_search');
@@ -21,19 +21,20 @@ class SearchController extends Controller
             $limit = isset($config['default_limit']) ? $config['default_limit'] : null;
 
             if($data->getSearchType() == 'search'){
-                $results = $service->search($data->getIndex(), $data->getTerm(), $limit);
+                $results = $service->searchPaginated($data->getIndex(), $data->getTerm(), $data->getPage(), $limit);
             } elseif($data->getSearchType() == 'find') {
-                $results = $service->find($data->getIndex(), $data->getTerm(), $limit);
+
+                $results = $service->findPaginated($data->getIndex(), $data->getTerm(), $data->getPage(), $limit);
             }
 
-            $resultHtml = $self->renderView('XiSearchBundle:Search:search.html.twig', array(
+            $resultHtml = $self->renderView('XiSearchBundle:Search:search_paginated.html.twig', array(
                 'results' => $results, 'index' => $data->getIndex(), 'options' => json_decode($data->getOptions())
             ));
 
-            return $self->createJsonSuccessWithContent($resultHtml, 'xiSearchResultCallback');          
+            return $self->createJsonSuccessWithContent($resultHtml, 'xiSearchResultCallback');
         });
     }
- 
+
     /**
      * @return SearchService
      */

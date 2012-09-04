@@ -8,12 +8,16 @@
             "name": "xi-project",
             "email": "xi.devs@gmail.com"
         }
-    ],     
+    ],
+    "minimum-stability": "dev",
     "require": {
-        "symfony/framework-bundle": "=v2.0.14",
-        "symfony/form": "=v2.0.14",
-        "symfony/dependency-injection": "=v2.0.14",
-        "twig/twig": "1.*"
+        "symfony/framework-bundle": "2.1.*",
+        "symfony/form": "2.1.*",
+        "symfony/dependency-injection": "2.1.*",
+        "twig/twig": "1.*",
+        "exercise/elastica-bundle": "dev-master",
+        "knplabs/knp-paginator-bundle": "dev-master",
+        "xi/ajax-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": {

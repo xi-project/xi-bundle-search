@@ -29,6 +29,15 @@ interface Search
      * @return  array - array of entities
      */
     public function find($index, $term, $limit = null);
-    
-    
+
+    /**
+     * Find a set wrapped inside a paginator
+     *
+     * @param  string $index [description]
+     * @param  string $term  [description]
+     * @param  int    $page  [description]
+     * @param  int    $limit [description]
+     * @return PaginatorInterface
+     */
+    public function findPaginated($index, $term, $page = 1, $limit = null);
 }
