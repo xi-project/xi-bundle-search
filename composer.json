@@ -13,7 +13,8 @@
         "symfony/framework-bundle": "=v2.0.14",
         "symfony/form": "=v2.0.14",
         "symfony/dependency-injection": "=v2.0.14",
-        "twig/twig": "1.*"
+        "twig/twig": "1.*",
+        "xi/ajax-bundle": "2.0.x-dev"
     },
     "autoload": {
         "psr-0": {
