@@ -11,11 +11,18 @@ class ChoosableSearchType extends SearchType
 
     private $choices = array();
 
+    /**
+     * @param array $choices
+     */
     public function __construct($choices)
     {
         $this->choices = $choices;
     }
 
+    /**
+     * @param  FormBuilderInterface $builder
+     * @param  array                $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder

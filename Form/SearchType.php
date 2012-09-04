@@ -8,9 +8,13 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 
 class SearchType extends AbstractType
 {
-    
+
+    /**
+     * @param  FormBuilderInterface $builder
+     * @param  array                $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
-    {     
+    {
         $builder
             ->add('options',    'hidden')
             ->add('index',      'hidden')
@@ -19,16 +23,22 @@ class SearchType extends AbstractType
             ->add('term',       'text',         array('label' => 'search.form.term.label'));         
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'xi_searchbundle_searchtype';
     }
-   
+
+    /**
+     * @param OptionsResolverInterface $resolver
+     */
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
             'data_class' => 'Xi\Bundle\SearchBundle\Form\Model\SearchModel',
         ));
     }
-  
+
 }

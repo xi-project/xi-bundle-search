@@ -50,7 +50,7 @@ class FOQElasticaSearch implements Search
      * Gets a paginator wrapping the result of a search
      *
      * @param  string $index
-     * @param  strgin $term
+     * @param  string $term
      * @param  int    $page
      * @param  int    $limit
      * @return PaginationInterface
@@ -110,7 +110,7 @@ class FOQElasticaSearch implements Search
      * Gets a paginator wrapping the result of a search
      *
      * @param  string $index
-     * @param  strgin $term
+     * @param  string $term
      * @param  int    $page
      * @param  int    $limit
      * @return PaginationInterface

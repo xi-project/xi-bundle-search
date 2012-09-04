@@ -12,6 +12,9 @@ use Knp\Component\Pager\Event\Subscriber\Paginate\ElasticaQuerySubscriber as Bas
  */
 class ElasticaQuerySubscriber extends BaseSubscriber
 {
+    /**
+     * @param  ItemsEvent $event
+     */
     public function items(ItemsEvent $event)
     {
         if (is_array($event->target) && 2 === count($event->target) && isset($event->target[0], $event->target[1]) &&
