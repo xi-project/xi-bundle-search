@@ -17,7 +17,7 @@
         "twig/twig": "1.*",
         "exercise/elastica-bundle": "dev-master",
         "knplabs/knp-paginator-bundle": "dev-master",
-        "xi/ajax-bundle": "2.1.x-dev"
+        "xi/ajax-bundle": "dev-master"
     },
     "autoload": {
         "psr-0": {
